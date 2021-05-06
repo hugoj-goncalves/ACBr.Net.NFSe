@@ -54,6 +54,7 @@ namespace ACBr.Net.NFSe.Providers
             Municipios = new List<ACBrMunicipioNFSe>();
             Providers = new Dictionary<NFSeProvider, Type>
             {
+                {NFSeProvider.Maringa, typeof(ProviderMaringa)},
                 {NFSeProvider.Abaco, typeof(ProviderAbaco)},
                 {NFSeProvider.BHISS, typeof(ProviderBHISS)},
                 {NFSeProvider.Betha, typeof(ProviderBetha)},

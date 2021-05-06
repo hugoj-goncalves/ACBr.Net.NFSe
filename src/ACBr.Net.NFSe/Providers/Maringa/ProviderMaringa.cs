@@ -1,12 +1,12 @@
-// ***********************************************************************
+﻿// ***********************************************************************
 // Assembly         : ACBr.Net.NFSe
 // Author           : Rafael Dias
-// Created          : 07-30-2017
+// Created          : 05-22-2018
 //
 // Last Modified By : Rafael Dias
-// Last Modified On : 07-30-2017
+// Last Modified On : 07-11-2018
 // ***********************************************************************
-// <copyright file="NFSeProvider.cs" company="ACBr.Net">
+// <copyright file="IGovDigitalService.cs" company="ACBr.Net">
 //		        		   The MIT License (MIT)
 //	     		    Copyright (c) 2016 Grupo ACBr.Net
 //
@@ -29,66 +29,45 @@
 // <summary></summary>
 // ***********************************************************************
 
-using System.ComponentModel;
+using System;
+using ACBr.Net.DFe.Core;
+using ACBr.Net.NFSe.Configuracao;
+using ACBr.Net.NFSe.Nota;
 
 namespace ACBr.Net.NFSe.Providers
 {
-    public enum NFSeProvider : byte
+    internal sealed class ProviderMaringa : ProviderABRASF201
     {
-        Abaco = 0,
+        #region Constructors
 
-        Betha = 1,
+        public ProviderMaringa(ConfigNFSe config, ACBrMunicipioNFSe municipio) : base(config, municipio)
+        {
+            Name = "Maringa";
+        }
 
-        [Description("Betha v2")]
-        Betha2 = 2,
+        #endregion Constructors
 
-        BHISS = 8,
+        #region Methods
 
-        Coplan = 3,
+        #region Protected Methods
 
-        DBSeller = 19,
+        protected override void AssinarEnviarSincrono(RetornoEnviar retornoWebservice)
+        {
+            retornoWebservice.XmlEnvio = XmlSigning.AssinarXml(retornoWebservice.XmlEnvio, "EnviarLoteRpsSincronoEnvio", "LoteRps", Certificado);
+        }
 
-        DSF = 4,
+        protected override void PrepararEnviar(RetornoEnviar retornoWebservice, NotaServicoCollection notas)
+        {
+            throw new NotImplementedException($"O provedor [{Name}] não implementa o método [{nameof(Enviar)}], utilize o método [{nameof(EnviarSincrono)}]");
+        }
 
-        Equiplano = 15,
+        protected override IServiceClient GetClient(TipoUrl tipo)
+        {
+            return new MaringaServiceClient(this, tipo);
+        }
 
-        Fiorilli = 16,
+        #endregion Protected Methods
 
-        FissLex = 12,
-
-        Ginfes = 5,
-
-        ISSNet = 18,
-
-        [Description("NFe Cidades")]
-        NFeCidades = 6,
-
-        [Description("Nota Carioca")]
-        NotaCarioca = 7,
-
-        [Description("Pronim v2")]
-        Pronim2 = 17,
-
-        [Description("S�o Paulo")]
-        SaoPaulo = 9,
-
-        [Description("SmarAPD ABRASF")]
-        SmarAPDABRASF = 14,
-
-        [Description("Vitoria")]
-        Vitoria = 13,
-
-        WebIss = 10,
-
-        [Description("WebIss v2")]
-        WebIss2 = 11,
-
-        Sigiss = 20,
-
-        [Description("CONAM")]
-        Conam = 21,
-
-        [Description("Maring�")]
-        Maringa = 22,
+        #endregion Methods
     }
 }
