@@ -5213,91 +5213,91 @@
 			<CodigoSiafi>7691</CodigoSiafi>
 			<IdEntidade>0</IdEntidade>
 			<Nome>Maringá</Nome>
-			<Provedor>SmarAPDABRASF</Provedor>
+			<Provedor>Maringa</Provedor>
 			<TamanhoIm>0</TamanhoIm>
 			<UF>PR</UF>
 			<UrlHomologacao>
 				<Item>
 					<TipoUrl>Enviar</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>EnviarSincrono</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01#EnviarLoteRpsSincrono</Url>
 				</Item>
 				<Item>
 					<TipoUrl>CancelarNFSe</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>CancelarNFSeLote</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarNFSe</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarNFSeRps</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarLoteRps</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarSituacao</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarSequencialRps</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>SubstituirNFSe</TipoUrl>
-					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.hom-ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 			</UrlHomologacao>
 			<UrlProducao>
 				<Item>
 					<TipoUrl>Enviar</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>EnviarSincrono</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01#EnviarLoteRpsSincrono</Url>
 				</Item>
 				<Item>
 					<TipoUrl>CancelarNFSe</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>CancelarNFSeLote</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarNFSe</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarNFSeRps</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarLoteRps</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarSituacao</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>ConsultarSequencialRps</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 				<Item>
 					<TipoUrl>SubstituirNFSe</TipoUrl>
-					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01/?wsdl</Url>
+					<Url>https://nfse-ws.ecity.maringa.pr.gov.br/v2.01</Url>
 				</Item>
 			</UrlProducao>
 		</Municipio>
