@@ -53,6 +53,7 @@ namespace ACBr.Net.NFSe.Configuracao
             EmissaoPathNFSe = false;
 
             var path = Assembly.GetExecutingAssembly().GetPath();
+            path = Path.Combine(path, "..", "logs-nf");
             if (!path.IsEmpty())
             {
                 PathNFSe = Path.Combine(path, "NFSe");

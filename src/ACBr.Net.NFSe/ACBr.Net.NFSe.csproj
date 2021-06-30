@@ -2,18 +2,18 @@
 
   <PropertyGroup>
     <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
-    <AssemblyName>ACBr.Net.NFSe</AssemblyName>
+    <AssemblyName>Eklesia.ACBr.Net.NFSe</AssemblyName>
     <RootNamespace>ACBr.Net.NFSe</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>acbr.net.snk</AssemblyOriginatorKeyFile>
-    <Copyright>Copyright © Grupo ACBr.Net 2014 - 2021</Copyright>
-    <Company>Grupo ACBr.Net</Company>
-    <Authors>Rafael Dias</Authors>
+    <Copyright>Copyright © Eklesia 2014 - 2021</Copyright>
+    <Company>Eklesia</Company>
+    <Authors>Hugo José</Authors>
     <PackageProjectUrl>https://acbrnet.github.io</PackageProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <RepositoryUrl>https://github.com/ACBrNet/ACBr.Net.NFSe</RepositoryUrl>
+    <RepositoryUrl>https://github.com/hugoj-goncalves/ACBr.Net.NFSe</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>ACBr.Net NFSe ACBrNFSe</PackageTags>
+    <PackageTags>Eklesia ACBr.Net NFSe ACBrNFSe</PackageTags>
     <Description>
       Biblioteca para emissão e trasmissão de NFSe.
 
@@ -30,9 +30,9 @@
       - SmarAPD ABRASAF.
       - Fiorilli.
       - Goiânia.
+      - ISSe.
       - NFe Cidades (GovDigital).
       - Porto Alegre (Em Teste).
-      - ISSe (Em Teste).
       - IIS Net (Em Teste).
       - Abaco (Em Teste).
       - Betha v1 (Em Teste).
@@ -44,9 +44,9 @@
     </Description>
     <NeutralLanguage>pt-BR</NeutralLanguage>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.5.1.0</AssemblyVersion>
-    <FileVersion>1.5.1.0</FileVersion>
-    <Version>1.5.1.7</Version>
+    <AssemblyVersion>1.5.1.8</AssemblyVersion>
+    <FileVersion>1.5.1.8</FileVersion>
+    <Version>1.5.1.8</Version>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
