@@ -68,6 +68,8 @@ namespace ACBr.Net.NFSe.Nota
         public string CodigoCnae { get; set; }
 
         public string CodigoTributacaoMunicipio { get; set; }
+        
+        public string CodigoTributacaoNacional { get; set; }
 
         public string CodigoNbs { get; set; }
 

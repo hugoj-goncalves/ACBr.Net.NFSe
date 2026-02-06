@@ -93,6 +93,10 @@ namespace ACBr.Net.NFSe.Providers
         Conam = 21,
 
         [Description("Goiania")]
-        Goiania = 22
+        Goiania = 22,
+
+        Publica = 25,
+
+        EmissorNacional = 26,
     }
 }

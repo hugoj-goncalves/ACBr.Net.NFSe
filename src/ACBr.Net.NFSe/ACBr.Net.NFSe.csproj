@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
     <AssemblyName>Eklesia.ACBr.Net.NFSe</AssemblyName>
     <RootNamespace>ACBr.Net.NFSe</RootNamespace>
     <SignAssembly>true</SignAssembly>
@@ -44,9 +43,9 @@
     </Description>
     <NeutralLanguage>pt-BR</NeutralLanguage>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.5.1.8</AssemblyVersion>
-    <FileVersion>1.5.1.8</FileVersion>
-    <Version>1.5.1.8</Version>
+    <AssemblyVersion>1.5.1.9</AssemblyVersion>
+    <FileVersion>1.5.1.9</FileVersion>
+    <Version>1.5.1.9</Version>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
@@ -56,6 +55,7 @@
 
     </PackageReleaseNotes>
     <PackageIcon>ACBr.Net.png</PackageIcon>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
@@ -93,6 +93,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.3.3">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

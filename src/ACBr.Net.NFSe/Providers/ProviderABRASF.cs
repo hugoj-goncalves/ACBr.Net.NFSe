@@ -45,7 +45,7 @@ using ACBr.Net.NFSe.Nota;
 namespace ACBr.Net.NFSe.Providers
 {
     /// <summary>
-    /// Classe base para trabalhar com provedores que usam o padrão ABRASF V1
+    /// Classe base para trabalhar com provedores que usam o padrï¿½o ABRASF V1
     /// </summary>
     public abstract class ProviderABRASF : ProviderBase
     {
@@ -121,7 +121,7 @@ namespace ACBr.Net.NFSe.Providers
             else
                 ret.IdentificacaoRps.DataEmissao = rootDoc.ElementAnyNs("DataEmissao")?.GetValue<DateTime>() ?? DateTime.MinValue;
 
-            // Natureza da Operação
+            // Natureza da Operaï¿½ï¿½o
             ret.NaturezaOperacao = rootDoc.ElementAnyNs("NaturezaOperacao").GetValue<int>();
 
             // Simples Nacional
@@ -131,7 +131,7 @@ namespace ACBr.Net.NFSe.Providers
             }
             else
             {
-                // Regime Especial de Tributaçao
+                // Regime Especial de Tributaï¿½ao
                 switch (rootDoc.ElementAnyNs("RegimeEspecialTributacao")?.GetValue<int>())
                 {
                     case 1:
@@ -172,7 +172,7 @@ namespace ACBr.Net.NFSe.Providers
                     break;
             }
 
-            // Situação do RPS
+            // Situaï¿½ï¿½o do RPS
             if (isRps)
             {
                 ret.Situacao = (rootDoc.ElementAnyNs("Status")?.GetValue<string>() ?? string.Empty) == "2" ? SituacaoNFSeRps.Cancelado : SituacaoNFSeRps.Normal;
@@ -193,7 +193,7 @@ namespace ACBr.Net.NFSe.Providers
                 ret.OutrasInformacoes = rootDoc.ElementAnyNs("OutrasInformacoes")?.GetValue<string>() ?? string.Empty;
             }
 
-            // Serviços e Valores
+            // Serviï¿½os e Valores
             var rootServico = rootDoc.ElementAnyNs("Servico");
             if (rootServico != null)
             {
@@ -329,7 +329,7 @@ namespace ACBr.Net.NFSe.Providers
 
             if (isNFSe)
             {
-                // Orgão Gerador
+                // Orgï¿½o Gerador
                 var rootOrgaoGerador = rootDoc.ElementAnyNs("OrgaoGerador");
                 if (rootOrgaoGerador != null)
                 {
@@ -338,7 +338,7 @@ namespace ACBr.Net.NFSe.Providers
                 }
             }
 
-            // Construção Civil
+            // Construï¿½ï¿½o Civil
             var rootConstrucaoCivil = rootDoc.ElementAnyNs("ConstrucaoCivil");
             if (rootConstrucaoCivil != null)
             {
@@ -346,7 +346,7 @@ namespace ACBr.Net.NFSe.Providers
                 ret.ConstrucaoCivil.ArtObra = rootConstrucaoCivil.ElementAnyNs("Art")?.GetValue<string>() ?? string.Empty;
             }
 
-            // Verifica se a NFSe está cancelada
+            // Verifica se a NFSe estï¿½ cancelada
             if (rootCanc != null)
             {
                 ret.Situacao = SituacaoNFSeRps.Cancelado;
@@ -943,8 +943,8 @@ namespace ACBr.Net.NFSe.Providers
         /// <inheritdoc />
         protected override void PrepararEnviar(RetornoEnviar retornoWebservice, NotaServicoCollection notas)
         {
-            if (retornoWebservice.Lote == 0) retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lote não informado." });
-            if (notas.Count == 0) retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "RPS não informado." });
+            if (retornoWebservice.Lote == 0) retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lote nï¿½o informado." });
+            if (notas.Count == 0) retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "RPS nï¿½o informado." });
             if (retornoWebservice.Erros.Count > 0) return;
 
             var xmlLoteRps = new StringBuilder();
@@ -975,8 +975,8 @@ namespace ACBr.Net.NFSe.Providers
         /// <inheritdoc />
         protected override void PrepararEnviarSincrono(RetornoEnviar retornoWebservice, NotaServicoCollection notas)
         {
-            if (retornoWebservice.Lote == 0) retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lote não informado." });
-            if (notas.Count == 0) retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "RPS não informado." });
+            if (retornoWebservice.Lote == 0) retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lote nï¿½o informado." });
+            if (notas.Count == 0) retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "RPS nï¿½o informado." });
             if (notas.Count > 3) retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Apenas 3 RPS podem ser enviados em modo Sincrono." });
             if (retornoWebservice.Erros.Count > 0) return;
 
@@ -1038,7 +1038,7 @@ namespace ACBr.Net.NFSe.Providers
         /// <inheritdoc />
         protected override void PrepararConsultarSequencialRps(RetornoConsultarSequencialRps retornoWebservice)
         {
-            throw new NotImplementedException("Função não implementada/suportada neste Provedor !");
+            throw new NotImplementedException("Funï¿½ï¿½o nï¿½o implementada/suportada neste Provedor !");
         }
 
         /// <inheritdoc />
@@ -1046,7 +1046,7 @@ namespace ACBr.Net.NFSe.Providers
         {
             if (retornoWebservice.NumeroRps < 1)
             {
-                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Número da RPS não informado para a consulta." });
+                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Nï¿½mero da RPS nï¿½o informado para a consulta." });
                 return;
             }
 
@@ -1123,7 +1123,7 @@ namespace ACBr.Net.NFSe.Providers
         {
             if (retornoWebservice.NumeroNFSe.IsEmpty() || retornoWebservice.CodigoCancelamento.IsEmpty())
             {
-                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Número da NFSe/Codigo de cancelamento não informado para cancelamento." });
+                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Nï¿½mero da NFSe/Codigo de cancelamento nï¿½o informado para cancelamento." });
                 return;
             }
 
@@ -1148,13 +1148,13 @@ namespace ACBr.Net.NFSe.Providers
         /// <inheritdoc />
         protected override void PrepararCancelarNFSeLote(RetornoCancelarNFSeLote retornoWebservice, NotaServicoCollection notas)
         {
-            throw new NotImplementedException("Função não implementada/suportada neste Provedor !");
+            throw new NotImplementedException("Funï¿½ï¿½o nï¿½o implementada/suportada neste Provedor !");
         }
 
         /// <inheritdoc />
         protected override void PrepararSubstituirNFSe(RetornoSubstituirNFSe retornoWebservice, NotaServicoCollection notas)
         {
-            throw new NotImplementedException("Função não implementada/suportada neste Provedor !");
+            throw new NotImplementedException("Funï¿½ï¿½o nï¿½o implementada/suportada neste Provedor !");
         }
 
         /// <inheritdoc />
@@ -1252,7 +1252,7 @@ namespace ACBr.Net.NFSe.Providers
 
             if (listaNfse == null)
             {
-                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lista de NFSe não encontrada! (ListaNfse)" });
+                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lista de NFSe nï¿½o encontrada! (ListaNfse)" });
                 return;
             }
 
@@ -1306,7 +1306,7 @@ namespace ACBr.Net.NFSe.Providers
 
             if (listaNfse == null)
             {
-                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lista de NFSe não encontrada! (ListaNfse)" });
+                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lista de NFSe nï¿½o encontrada! (ListaNfse)" });
                 return;
             }
 
@@ -1339,7 +1339,7 @@ namespace ACBr.Net.NFSe.Providers
         /// <inheritdoc />
         protected override void TratarRetornoConsultarSequencialRps(RetornoConsultarSequencialRps retornoWebservice)
         {
-            throw new NotImplementedException("Função não implementada/suportada neste Provedor !");
+            throw new NotImplementedException("Funï¿½ï¿½o nï¿½o implementada/suportada neste Provedor !");
         }
 
         /// <inheritdoc />
@@ -1353,11 +1353,11 @@ namespace ACBr.Net.NFSe.Providers
             var compNfse = xmlRet.ElementAnyNs("ConsultarNfseRpsResposta")?.ElementAnyNs("CompNfse");
             if (compNfse == null)
             {
-                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Nota Fiscal não encontrada! (CompNfse)" });
+                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Nota Fiscal nï¿½o encontrada! (CompNfse)" });
                 return;
             }
 
-            // Carrega a nota fiscal na coleção de Notas Fiscais
+            // Carrega a nota fiscal na coleï¿½ï¿½o de Notas Fiscais
             var nota = LoadXml(compNfse.AsString());
             notas.Add(nota);
 
@@ -1376,7 +1376,7 @@ namespace ACBr.Net.NFSe.Providers
             var listaNfse = retornoLote?.ElementAnyNs("ListaNfse");
             if (listaNfse == null)
             {
-                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lista de NFSe não encontrada! (ListaNfse)" });
+                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Lista de NFSe nï¿½o encontrada! (ListaNfse)" });
                 return;
             }
 
@@ -1384,7 +1384,7 @@ namespace ACBr.Net.NFSe.Providers
 
             foreach (var compNfse in listaNfse.ElementsAnyNs("CompNfse"))
             {
-                // Carrega a nota fiscal na coleção de Notas Fiscais
+                // Carrega a nota fiscal na coleï¿½ï¿½o de Notas Fiscais
                 var nota = LoadXml(compNfse.AsString());
                 notas.Add(nota);
                 notasServico.Add(nota);
@@ -1408,7 +1408,7 @@ namespace ACBr.Net.NFSe.Providers
 
             if (confirmacaoCancelamento == null)
             {
-                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Confirmação do cancelamento não encontrada!" });
+                retornoWebservice.Erros.Add(new Evento { Codigo = "0", Descricao = "Confirmaï¿½ï¿½o do cancelamento nï¿½o encontrada!" });
                 return;
             }
 
@@ -1420,7 +1420,7 @@ namespace ACBr.Net.NFSe.Providers
             var numeroNFSe = confirmacaoCancelamento.ElementAnyNs("Pedido").ElementAnyNs("InfPedidoCancelamento")?
                                  .ElementAnyNs("IdentificacaoNfse")?.ElementAnyNs("Numero").GetValue<string>() ?? string.Empty;
 
-            // Se a nota fiscal cancelada existir na coleção de Notas Fiscais, atualiza seu status:
+            // Se a nota fiscal cancelada existir na coleï¿½ï¿½o de Notas Fiscais, atualiza seu status:
             var nota = notas.FirstOrDefault(x => x.IdentificacaoNFSe.Numero.Trim() == numeroNFSe);
             if (nota == null) return;
 
@@ -1432,13 +1432,13 @@ namespace ACBr.Net.NFSe.Providers
         /// <inheritdoc />
         protected override void TratarRetornoCancelarNFSeLote(RetornoCancelarNFSeLote retornoWebservice, NotaServicoCollection notas)
         {
-            throw new NotImplementedException("Função não implementada/suportada neste Provedor !");
+            throw new NotImplementedException("Funï¿½ï¿½o nï¿½o implementada/suportada neste Provedor !");
         }
 
         /// <inheritdoc />
         protected override void TratarRetornoSubstituirNFSe(RetornoSubstituirNFSe retornoWebservice, NotaServicoCollection notas)
         {
-            throw new NotImplementedException("Função não implementada/suportada neste Provedor !");
+            throw new NotImplementedException("Funï¿½ï¿½o nï¿½o implementada/suportada neste Provedor !");
         }
 
         #endregion Services

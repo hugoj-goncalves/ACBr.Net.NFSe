@@ -94,6 +94,40 @@ namespace ACBr.Net.NFSe
         #endregion Propriedades
 
         #region Methods
+        
+        public RetornoEnviar ObterXMLEnvio(int lote, bool imprimir = false)
+
+        {
+            Guard.Against<ACBrException>(provider == null, "ERRO: Nenhuma cidade informada.");
+            Guard.Against<ACBrException>(NotasServico.Count < 1, "ERRO: Nenhuma RPS adicionada ao Lote");
+
+            Guard.Against<ACBrException>(NotasServico.Count > 1,
+                $"ERRO: Conjunto de RPS transmitidos (máximo de 1 RPS) excedido.{Environment.NewLine}" +
+                $"Quantidade atual: {NotasServico.Count}");
+
+            var oldProtocol = ServicePointManager.SecurityProtocol;
+
+            try
+            {
+                ServicePointManager.SecurityProtocol = Configuracoes.WebServices.Protocolos;
+
+                var ret = provider.ObterXMLEnvio(lote, NotasServico);
+
+                if (ret.Sucesso && imprimir)
+                    DANFSe?.Imprimir();
+
+                return ret;
+            }
+            catch (Exception exception)
+            {
+                this.Log().Error("[Enviar]", exception);
+                throw;
+            }
+            finally
+            {
+                ServicePointManager.SecurityProtocol = oldProtocol;
+            }
+        }
 
         /// <summary>
         /// Envia as NFSe para o provedor da cidade.

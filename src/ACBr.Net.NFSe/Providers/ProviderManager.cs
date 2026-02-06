@@ -43,7 +43,7 @@ using System.Runtime.Serialization;
 namespace ACBr.Net.NFSe.Providers
 {
     /// <summary>
-    /// Classe responsável por criar uma nova instancia do provedor
+    /// Classe responsï¿½vel por criar uma nova instancia do provedor
     /// </summary>
     public static class ProviderManager
     {
@@ -78,7 +78,9 @@ namespace ACBr.Net.NFSe.Providers
                 {NFSeProvider.Conam, typeof(ProviderCONAM)},
                 {NFSeProvider.Goiania, typeof(ProviderGoiania)},
                 {NFSeProvider.ISSe, typeof(ProviderISSe)},
-                {NFSeProvider.SimplISS, typeof(ProviderSimplISS)}
+                {NFSeProvider.SimplISS, typeof(ProviderSimplISS)},
+                {NFSeProvider.Publica, typeof(ProviderPublica)},
+                {NFSeProvider.EmissorNacional, typeof(ProviderEmissorNacional)}
             };
 
             Load();
@@ -157,7 +159,7 @@ namespace ACBr.Net.NFSe.Providers
                 buffer = File.ReadAllBytes(path);
             }
 
-            Guard.Against<ArgumentException>(buffer == null, "Arquivo de cidades não encontrado");
+            Guard.Against<ArgumentException>(buffer == null, "Arquivo de cidades nï¿½o encontrado");
 
             using (var stream = new MemoryStream(buffer))
             {
@@ -172,7 +174,7 @@ namespace ACBr.Net.NFSe.Providers
         /// <param name="clean">if set to <c>true</c> [clean].</param>
         public static void Load(Stream stream, bool clean = true)
         {
-            Guard.Against<ArgumentException>(stream == null, "Arquivo de cidades não encontrado");
+            Guard.Against<ArgumentException>(stream == null, "Arquivo de cidades nï¿½o encontrado");
 
             var formatter = new DataContractSerializer(typeof(MunicipiosNFSe));
             var municipiosNFSe = (MunicipiosNFSe)formatter.ReadObject(stream);
@@ -182,18 +184,18 @@ namespace ACBr.Net.NFSe.Providers
         }
 
         /// <summary>
-        /// Retorna o provedor para o municipio nas configurações informadas.
+        /// Retorna o provedor para o municipio nas configuraï¿½ï¿½es informadas.
         /// </summary>
-        /// <param name="config">A configuração.</param>
+        /// <param name="config">A configuraï¿½ï¿½o.</param>
         /// <returns>Provedor NFSe.</returns>
         public static ProviderBase GetProvider(ConfigNFSe config)
         {
             var municipio = Municipios.SingleOrDefault(x => x.Codigo == config.WebServices.CodigoMunicipio);
-            Guard.Against<ACBrException>(municipio == null, "Provedor para esta cidade não implementado ou não especificado!");
+            Guard.Against<ACBrException>(municipio == null, "Provedor para esta cidade nï¿½o implementado ou nï¿½o especificado!");
 
             // ReSharper disable once PossibleNullReferenceException
             var providerType = Providers[municipio.Provedor];
-            Guard.Against<ACBrException>(providerType == null, "Provedor não encontrado!");
+            Guard.Against<ACBrException>(providerType == null, "Provedor nï¿½o encontrado!");
             Guard.Against<ACBrException>(!CheckBaseType(providerType), "Classe base do provedor incorreta!");
 
             // ReSharper disable once AssignNullToNotNullAttribute

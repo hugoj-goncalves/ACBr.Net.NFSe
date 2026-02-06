@@ -77,6 +77,10 @@ namespace ACBr.Net.NFSe.Nota
 
         public decimal BaseCalculo { get; set; }
 
+        public decimal EstimativaTributoPercentualFederal { get; set; }
+        public decimal EstimativaTributoPercentualEstadual { get; set; }
+        public decimal EstimativaTributoPercentualMunicipal { get; set; }
+
         public decimal Aliquota { get; set; }
 
         public decimal AliquotaPis { get; set; }
