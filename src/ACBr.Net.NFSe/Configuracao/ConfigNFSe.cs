@@ -53,9 +53,9 @@ namespace ACBr.Net.NFSe.Configuracao
         #region Properties
 
         /// <summary>
-        /// Gets the prestado padrão.
+        /// Gets the prestado padrï¿½o.
         /// </summary>
-        /// <value>The prestado padrão.</value>
+        /// <value>The prestado padrï¿½o.</value>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public DadosPrestador PrestadorPadrao { get; set; }
 
@@ -71,6 +71,11 @@ namespace ACBr.Net.NFSe.Configuracao
             Certificados = new ConfigCertificadosNFSe(Parent);
             Arquivos = new ConfigArquivosNFSe(Parent);
             PrestadorPadrao = new DadosPrestador();
+        }
+
+        public void UpdateCofigFiles()
+        {
+            Arquivos = new ConfigArquivosNFSe(Parent);
         }
 
         #endregion Methods

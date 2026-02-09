@@ -56,6 +56,15 @@ namespace ACBr.Net.NFSe
 #endif
     public sealed class ACBrNFSe : ACBrComponent, IACBrLog
     {
+        public string Empresa { get; }
+
+        public ACBrNFSe(string empresa = null)
+        {
+            Empresa = empresa;
+            if (!string.IsNullOrWhiteSpace(empresa))
+                Configuracoes?.UpdateCofigFiles();
+        }
+
         #region Fields
 
         private ACBrDANFSeBase danfSe;

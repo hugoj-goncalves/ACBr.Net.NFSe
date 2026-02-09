@@ -52,8 +52,9 @@ namespace ACBr.Net.NFSe.Configuracao
         {
             EmissaoPathNFSe = false;
 
+            var complemento = parent.Empresa ?? string.Empty;
             var path = Assembly.GetExecutingAssembly().GetPath();
-            path = Path.Combine(path, "..", "logs-nf");
+            path = Path.Combine(path, "..", complemento, "logs-nf");
             if (!path.IsEmpty())
             {
                 PathNFSe = Path.Combine(path, "NFSe");
