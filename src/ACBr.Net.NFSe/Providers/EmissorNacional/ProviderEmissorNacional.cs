@@ -141,10 +141,12 @@ namespace ACBr.Net.NFSe.Providers
 
             string regimeEspecialTributacao;
             string optanteSimplesNacional;
+            string regimeApuracaoTributosSimplesNacional = null;
             if (nota.RegimeEspecialTributacao == RegimeEspecialTributacao.SimplesNacional)
             {
-                regimeEspecialTributacao = "6";
-                optanteSimplesNacional = "2";
+                regimeEspecialTributacao = "0";
+                regimeApuracaoTributosSimplesNacional = "1";
+                optanteSimplesNacional = "3";
             }
             else
             {
@@ -155,6 +157,7 @@ namespace ACBr.Net.NFSe.Providers
             
             var regimeTributario = new XElement("regTrib");
             regimeTributario.AddChild(AdicionarTag(TipoCampo.Int, "", "opSimpNac", 1, 1, Ocorrencia.Obrigatoria, optanteSimplesNacional));
+            regimeTributario.AddChild(AdicionarTag(TipoCampo.Int, "", "regApTribSN", 1, 1, Ocorrencia.NaoObrigatoria, regimeApuracaoTributosSimplesNacional));
             regimeTributario.AddChild(AdicionarTag(TipoCampo.Int, "", "regEspTrib", 1, 1, Ocorrencia.Obrigatoria, regimeEspecialTributacao));
             prestador.Add(regimeTributario);
 
@@ -205,6 +208,7 @@ namespace ACBr.Net.NFSe.Providers
 
             var complemento = new XElement("cServ");
             complemento.AddChild(AdicionarTag(TipoCampo.Int, "", "cTribNac", 6, 6, Ocorrencia.MaiorQueZero, nota.Servico.CodigoTributacaoNacional));
+            complemento.AddChild(AdicionarTag(TipoCampo.Int, "", "cTribMun", 3, 3, Ocorrencia.NaoObrigatoria, nota.Servico.CodigoTributacaoMunicipio));
             complemento.AddChild(AdicionarTag(TipoCampo.Str, "", "xDescServ", 1, 125, Ocorrencia.NaoObrigatoria, nota.Servico.Discriminacao));
             complemento.AddChild(AdicionarTag(TipoCampo.StrNumber, "", "cNBS", 9, 9, Ocorrencia.NaoObrigatoria, nota.Servico.CodigoNbs));
             servico.Add(complemento);
@@ -239,6 +243,15 @@ namespace ACBr.Net.NFSe.Providers
             tribMun.AddChild(AdicionarTag(TipoCampo.Int, "", "tribISSQN", 1, 1, Ocorrencia.Obrigatoria, valorISSQN));
             tribMun.AddChild(AdicionarTag(TipoCampo.Int, "", "tpRetISSQN", 1, 1, Ocorrencia.Obrigatoria, 1));
             trib.AddChild(tribMun);
+
+            if (nota.RegimeEspecialTributacao == RegimeEspecialTributacao.SimplesNacional)
+            {
+                var tribFed = new XElement("tribFed");
+                var piscofins = new XElement("piscofins");
+                tribFed.AddChild(piscofins);
+                piscofins.AddChild(AdicionarTag(TipoCampo.Int, "", "CST", 2, 2, Ocorrencia.Obrigatoria, "00"));
+                trib.AddChild(tribFed);
+            }
 
             var totTrib = new XElement("totTrib");
 
