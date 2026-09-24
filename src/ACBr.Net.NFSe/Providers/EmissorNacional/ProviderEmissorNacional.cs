@@ -50,7 +50,7 @@ namespace ACBr.Net.NFSe.Providers
 
         protected override string GetNamespace()
         {
-            return "xmlns=\"http://www.sped.fazenda.gov.br/nfse\" versao=\"1.00\"";
+            return "xmlns=\"http://www.sped.fazenda.gov.br/nfse\" versao=\"1.01\"";
         }
 
         protected override string GetSchema(TipoUrl tipo)
