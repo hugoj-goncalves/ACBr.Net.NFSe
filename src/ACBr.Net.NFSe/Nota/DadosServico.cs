@@ -55,6 +55,7 @@ namespace ACBr.Net.NFSe.Nota
             ExigibilidadeIss = ExigibilidadeIss.Exigivel;
             ItensServico = new ServicosCollection();
             Deducoes = new DeducoesCollection();
+            CodigoIhdicadorOperacaoFornecimento = string.Empty;
         }
 
         #endregion Constructors
@@ -96,6 +97,8 @@ namespace ACBr.Net.NFSe.Nota
         public string Descricao { get; set; }
 
         public DeducoesCollection Deducoes { get; }
+        
+        public string CodigoIhdicadorOperacaoFornecimento { get; set; }
 
         #endregion Propriedades
     }

@@ -130,6 +130,7 @@ namespace ACBr.Net.NFSe.Providers
             rps.AddChild(WriteTomadorRps(nota));
             rps.AddChild(WriteServico(nota));
             rps.AddChild(WriteServicosValoresRps(nota));
+            rps.AddChild(WriteIBSCBS(nota));
             return rps;
         }
 
@@ -250,6 +251,7 @@ namespace ACBr.Net.NFSe.Providers
                 var piscofins = new XElement("piscofins");
                 tribFed.AddChild(piscofins);
                 piscofins.AddChild(AdicionarTag(TipoCampo.Int, "", "CST", 2, 2, Ocorrencia.Obrigatoria, "00"));
+                piscofins.AddChild(AdicionarTag(TipoCampo.Int, "", "tpRetPisCofins", 1, 1, Ocorrencia.Obrigatoria, "0"));
                 trib.AddChild(tribFed);
             }
 
@@ -279,6 +281,28 @@ namespace ACBr.Net.NFSe.Providers
             // xmlLote.Append($"<InscricaoMunicipal>{Configuracoes.PrestadorPadrao.InscricaoMunicipal}</InscricaoMunicipal>");
             valores.AddChild(trib);
             return valores;
+        }
+        
+        protected XElement WriteIBSCBS(NotaServico nota)
+        {
+            var IBSCBS = new XElement("IBSCBS");
+            
+            IBSCBS.AddChild(AdicionarTag(TipoCampo.Int, "", "finNFSe", 0, 1, Ocorrencia.Obrigatoria, 0));
+            IBSCBS.AddChild(AdicionarTag(TipoCampo.Int, "", "indFinal", 0, 1, Ocorrencia.Obrigatoria, 0));
+            IBSCBS.AddChild(AdicionarTag(TipoCampo.Int, "", "cIndOp", 0, 6, Ocorrencia.Obrigatoria, nota.Servico.CodigoIhdicadorOperacaoFornecimento));
+            IBSCBS.AddChild(AdicionarTag(TipoCampo.Int, "", "indDest", 0, 1, Ocorrencia.Obrigatoria, 0));
+
+            var valores = new XElement("valores");
+            IBSCBS.AddChild(valores);
+            var trib = new XElement("trib");
+            valores.AddChild(trib);
+            var gib = new XElement("gIBSCBS");
+            trib.AddChild(gib);
+            
+            gib.AddChild(AdicionarTag(TipoCampo.StrNumber, "", "CST", 1, 3, Ocorrencia.Obrigatoria, "000".PadLeft(3, '0')));
+            gib.AddChild(AdicionarTag(TipoCampo.StrNumber, "", "cClassTrib", 1, 6, Ocorrencia.Obrigatoria, "1".PadLeft(6, '0')));
+
+            return IBSCBS;
         }
 
         protected override void TratarRetornoEnviar(RetornoEnviar retornoWebservice, NotaServicoCollection notas)
