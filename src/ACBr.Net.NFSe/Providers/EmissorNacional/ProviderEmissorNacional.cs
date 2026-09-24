@@ -12,6 +12,7 @@ using ACBr.Net.DFe.Core.Common;
 using ACBr.Net.DFe.Core.Serializer;
 using ACBr.Net.NFSe.Configuracao;
 using ACBr.Net.NFSe.Nota;
+using Newtonsoft.Json;
 
 namespace ACBr.Net.NFSe.Providers
 {
@@ -310,10 +311,37 @@ namespace ACBr.Net.NFSe.Providers
             if (string.IsNullOrWhiteSpace(retornoWebservice.XmlRetorno))
             {
                 retornoWebservice.Sucesso = false;
-                retornoWebservice.Erros.Add(new Evento
+                
+                var evento = new Evento
                 {
                     Descricao = $"Forçando a falha... analisar o retorno manualmente\n{retornoWebservice.EnvelopeRetorno}",
-                });
+                };
+                retornoWebservice.Erros.Add(evento);
+
+                try
+                {
+                    var retornoJson = JsonConvert.DeserializeObject<TratamentoErroEmissorNacional>(retornoWebservice.EnvelopeRetorno);
+                    if (retornoJson?.Erros != null)
+                    {
+                        foreach (var erros in retornoJson.Erros)
+                        {
+                            var eventoTratado = new Evento
+                            {
+                                Codigo = erros.Codigo,
+                                Descricao = erros.Descricao,
+                            };
+                            retornoWebservice.Erros.Add(eventoTratado);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var eventoTratado = new Evento
+                    {
+                        Descricao = "Falha ao tentar deserializar os erros.",
+                    };
+                    retornoWebservice.Erros.Add(eventoTratado);
+                }
             }
             else
             {
