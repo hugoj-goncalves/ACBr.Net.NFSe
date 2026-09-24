@@ -251,7 +251,7 @@ namespace ACBr.Net.NFSe.Providers
                 var piscofins = new XElement("piscofins");
                 tribFed.AddChild(piscofins);
                 piscofins.AddChild(AdicionarTag(TipoCampo.Int, "", "CST", 2, 2, Ocorrencia.Obrigatoria, "00"));
-                piscofins.AddChild(AdicionarTag(TipoCampo.Int, "", "tpRetPisCofins", 1, 1, Ocorrencia.Obrigatoria, "0"));
+                // piscofins.AddChild(AdicionarTag(TipoCampo.Int, "", "tpRetPisCofins", 1, 1, Ocorrencia.NaoObrigatoria, "0"));
                 trib.AddChild(tribFed);
             }
 
